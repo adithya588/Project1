@@ -1,0 +1,44 @@
+# This is a Databricks asset bundle definition for Project_Bundle.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: Project_Bundle
+  uuid: d219080c-ed5e-4b46-bc60-cdddebe96aa1
+
+include:
+  - resources/*.yml
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+  warehouse_id:
+    description: WarehouseId
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: "https://dbc-f4c27255-e116.cloud.databricks.com"
+      root_path: "/Workspace/Users/2100080145@kluniversity.in/.bundle/${bundle.name}/${bundle.target}"
+    variables:
+      catalog: dev_cat
+      schema: dev
+      warehouse_id: a9bf8f3105dac22a
+    presets:
+      artifacts_dynamic_version: true
+
+  prod:
+    mode: production
+    workspace:
+      host: "https://dbc-f4c27255-e116.cloud.databricks.com"
+      root_path: "/Workspace/Users/2100080145@kluniversity.in/.bundle/${bundle.name}/${bundle.target}"
+    variables:
+      catalog: dev_prod
+      schema: prod
+      warehouse_id: a9bf8f3105dac22a
+    permissions:
+      - user_name: 2100080145@kluniversity.in
+        level: CAN_MANAGE
