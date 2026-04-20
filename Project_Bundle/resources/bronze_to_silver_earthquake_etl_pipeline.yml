@@ -3,7 +3,7 @@
 resources:
   pipelines:
     bronze_to_silver_earthquake_etl_pipeline:
-      name: Bronze_Silver_Earthquake
+      name: Bronze_Silver_Earthquake_Prod
       configuration:
         catalog_name: ${var.catalog}
       libraries:
