@@ -36,7 +36,7 @@ targets:
       host: "https://dbc-f4c27255-e116.cloud.databricks.com"
       root_path: "/Workspace/Prod_Project1"
     variables:
-      catalog: dev_prod
+      catalog: prod_cat
       schema: prod
       warehouse_id: a9bf8f3105dac22a
     permissions:
